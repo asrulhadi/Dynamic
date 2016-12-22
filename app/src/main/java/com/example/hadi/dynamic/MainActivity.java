@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         b3.setOnClickListener(new ClickHandler("Inner 1"));
         Button b4 = (Button)findViewById(R.id.btn_inner2);
         b4.setOnClickListener(new ClickHandler("Inner 2"));
+
+        ((Button)findViewById(R.id.btn_main)).setOnClickListener(this);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +91,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     class ClickHandler implements View.OnClickListener {
