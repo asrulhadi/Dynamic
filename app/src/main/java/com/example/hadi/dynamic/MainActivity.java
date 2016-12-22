@@ -93,9 +93,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
+    public void xmlHandler(View v) {
+        Log.i("info","XML handler");
+    }
     @Override
     public void onClick(View v) {
-
+        Log.i("info","Click from main activity");
     }
 
     class ClickHandler implements View.OnClickListener {

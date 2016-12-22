@@ -34,7 +34,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_xml"
         android:layout_row="1"
-        android:layout_column="0" />
+        android:layout_column="0"
+        android:onClick="xmlHandler" />
 
     <Button
         android:text="Main"
