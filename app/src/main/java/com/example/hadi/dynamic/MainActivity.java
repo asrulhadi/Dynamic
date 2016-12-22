@@ -6,11 +6,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,7 +39,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onClick(View v) {
                 // function for btn anon 2
-                Log.i("info","Anonymous Button 2");
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.custom_toast,
+                        (ViewGroup) MainActivity.this.findViewById(R.id.custom_toast_container));
+
+                TextView text = (TextView) layout.findViewById(R.id.textView);
+                text.setText("Custom toast fragement");
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
             }
         });
 
@@ -98,7 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View v) {
-        Log.i("info","Click from main activity");
+        Toast t = Toast.makeText(this,"Click from main activity", Toast.LENGTH_SHORT);
+        t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
+        t.show();
     }
 
     class ClickHandler implements View.OnClickListener {
@@ -108,7 +125,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         @Override
         public void onClick(View v) {
-            Log.i("info","Button inner class " + name);
+            Toast.makeText(MainActivity.this, "Button inner class " + name,
+                    Toast.LENGTH_LONG).show();
         }
     }
 }
