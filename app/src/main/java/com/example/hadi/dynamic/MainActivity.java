@@ -1,8 +1,11 @@
 package com.example.hadi.dynamic;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.preference.DialogPreference;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -113,9 +116,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onClick(View v) {
+        /*
         Toast t = Toast.makeText(this,"Click from main activity", Toast.LENGTH_SHORT);
         t.setGravity(Gravity.CENTER_HORIZONTAL, 0, 0);
         t.show();
+        */
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setMessage("Continue").setTitle("Still OK??");
+        b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface d, int i) {
+                Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
+            }
+        });
+        b.create().show();
     }
 
     class ClickHandler implements View.OnClickListener {
